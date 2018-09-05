@@ -1,0 +1,71 @@
+[color]
+	status = auto
+	branch = auto
+	interactive = auto
+	diff = auto
+[core]
+	editor = vim # Change to whatever you want your default git editor to be
+	excludesfile = /Users/remo/.gitignore
+	quotepath = false
+[alias]
+	aa = add -A .
+	aacm = !git add -A . && git commit -m
+	amend = !git add -A && git commit --amend --no-edit
+	amendm = commit --amend -m
+        br = branch
+	brd = branch -d
+	brD = branch -D
+	b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+	ca = commit -a --verbose
+	co = checkout
+	cob = checkout -b
+	coo = !git fetch && git checkout
+	clr = rm -r --cached
+	cp = cherry-pick
+	cam = commit -a -v
+	cm = commit -m
+	d = diff
+        ds = diff --stat
+        dc = diff --cached
+	dmerged = "git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+	dev = !git checkout dev && git pull origin dev
+        f = "!git ls-files | grep -i"
+	gr = grep -Ii
+        ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	la = "!git config -l | grep alias | cut -c 7-" 
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	merged = branch --merged
+        master = !git checkout master && git pull origin 
+	m = commit --amend --verbose
+	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+        pu = !git push origin $(git rev-parse --abbrev-ref HEAD)
+	po = push origin
+	pod = push origin dev
+	pos = push origin staging
+	pom = push origin master
+	poh = push origin HEAD
+	pogm = !git push origin gh-pages && git checkout master && git pull origin master && git rebase gh-pages && git push origin master && git checkout gh-pages
+	pomg = !git push origin master && git checkout gh-pages && git pull origin gh-pages && git rebase master && git push origin gh-pages && git checkout master
+	plo = pull origin
+	plod = pull origin dev
+	plos = pull origin staging
+	plom = pull origin master
+	ploh = pull origin HEAD
+	r = remote -v
+	rall = ls-remote --heads
+	rh = reset --hard
+	#remote pointing to your colleagues forks
+	ra = "!f() { \
+        git remote add $1 https://bitbucket.org/$2.git; \
+                }; f"
+	staging = !git checkout staging && git pull origin staging
+	sortdiff = !sh -c 'git diff "$@" | grep "^[+-]" | sort --key=1.2 | uniq -u -s1'
+	st = status
+	#Add a subtree to your git project
+	sba = "!f() { \
+         	git subtree add --prefix $2 $1 master --squash; \
+                  }; f"
+	t = tag -l
+	unstage = reset HEAD
+	uncommit = reset --soft HEAD^
