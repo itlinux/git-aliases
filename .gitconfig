@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [color]
 	status = auto
 	branch = auto
@@ -16,6 +15,8 @@
         br = branch
 	brd = branch -d
 	brD = branch -D
+        brv = branch -v 
+        brr = branch -r 
 	b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
 	ca = commit -a --verbose
 	co = checkout
