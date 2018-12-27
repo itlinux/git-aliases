@@ -2,3 +2,5 @@
 === Aliases I use for my git. 
 I took me a while to find some good alias and I sorted them out.
 Love the options selected. Enjoy!
+
+Remo
